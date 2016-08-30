@@ -22,7 +22,7 @@ class WechatController extends Controller
                     break;
                 case 'text':
                     if($message->Content == 'test'){
-                        $weather = '今天'.$test['weather_today'];
+                        $weather = '今天'.$test['weather_today'].'明天'.$test['weather_tomorrow'];
                         return $weather;
                     }
                     return $message->Content;
