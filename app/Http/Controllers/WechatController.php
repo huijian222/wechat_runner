@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\API\weather;
 use Illuminate\Http\Request;
 use Log;
 use App\Http\Requests;
@@ -12,6 +12,8 @@ class WechatController extends Controller
     {
         Log::info('request arrived.'); # 注意：Log 为 Laravel 组件，所以它记的日志去 Laravel 日志看，而不是 EasyWeChat 日志
         $wechat = app('wechat');
+        $weather = new weather;
+        $test = $weather->getWeather('富阳');
         $userApi = $wechat->user;
         $wechat->server->setMessageHandler(function ($message) use ($userApi) {
             switch ($message->MsgType) {
@@ -20,7 +22,7 @@ class WechatController extends Controller
                     break;
                 case 'text':
                     if($message->Content == 'test'){
-                        return 1233;
+                        return $test['weather_today'];
                     }
                     return $message->Content;
                     break;
