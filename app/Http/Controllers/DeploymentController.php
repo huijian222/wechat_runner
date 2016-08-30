@@ -12,9 +12,9 @@ class DeploymentController extends Controller
         $token = 'justatest';
         $cmd = "  cd /var/www/wechat &&git pull &&echo 123";
         $json = json_decode(file_get_contents('php://input') , true);
-/*        if(empty($json['token']) || $json['token'] !== $token){
+        if(empty($json['token']) || $json['token'] !== $token){
             exit('error request');
-        }*/
+        }
         shell_exec($cmd);
     }
 }
