@@ -15,7 +15,7 @@ class WechatController extends Controller
         $weather = new weather;
         $test = $weather->getWeather('富阳');
         $userApi = $wechat->user;
-        $wechat->server->setMessageHandler(function ($message) use ($userApi) {
+        $wechat->server->setMessageHandler(function ($message) use ($userApi , $test) {
             switch ($message->MsgType) {
                 case 'event':
                     # 事件消息...
