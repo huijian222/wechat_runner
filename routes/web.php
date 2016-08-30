@@ -15,3 +15,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::any('/deploy' , 'DeploymentController@hook');
+Route::any('/wechat', 'WechatController@serve');
