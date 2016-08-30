@@ -19,6 +19,9 @@ class WechatController extends Controller
                     # 事件消息...
                     break;
                 case 'text':
+                    if($message->Content == 'test'){
+                        return 1233;
+                    }
                     return '你好 ' . $message->FromUserName . '我是你爸爸赖金榜';
                     break;
                 case 'image':
