@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Log;
-use EasyWeChat\Message\Text;
 use App\Http\Requests;
 
 class WechatController extends Controller
@@ -20,9 +19,6 @@ class WechatController extends Controller
                     # 事件消息...
                     break;
                 case 'text':
-                    if(Text->content == 'test'){
-                        return 123;
-                    }
                     return '你好 ' . $message->FromUserName . '我是你爸爸赖金榜';
                     break;
                 case 'image':
