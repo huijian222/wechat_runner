@@ -75,7 +75,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    TEST
+                    success
                 </div>
 
                 <div class="links">

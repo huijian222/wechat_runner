@@ -10,7 +10,7 @@ class DeploymentController extends Controller
 {
     public function hook(){
         $token = 'justatest';
-        $cmd = "  cd /var/www/test &&git pull &&echo 123";
+        $cmd = "  cd /var/www/wechat &&git pull &&echo 123";
         $json = json_decode(file_get_contents('php://input') , true);
 /*        if(empty($json['token']) || $json['token'] !== $token){
             exit('error request');
