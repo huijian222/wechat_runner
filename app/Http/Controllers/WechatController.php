@@ -22,7 +22,7 @@ class WechatController extends Controller
                     if($message->content == 'test'){
                         return 123;
                     }
-                    return '你好 ' . $message->FromUserName . '我是你爸爸赖金榜';
+                    //return '你好 ' . $message->FromUserName . '我是你爸爸赖金榜';
                     break;
                 case 'image':
                     # 图片消息...
