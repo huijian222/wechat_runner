@@ -21,12 +21,12 @@ class WechatController extends Controller
                     # 事件消息...
                     break;
                 case 'text':
-                    if($message->Content == 'test'){
+                    if($message->Content == '天气'){
                         $weather = '今天'.$test['weather_today'].', 明天'.$test['weather_tomorrow'].'
     今天温度:'.$test['temperature_today'].' ,明日温度:'.$test['temperature_tomorrow'];
                         return $weather;
                     }
-                    return $message->Content;
+                    return '想要查看天气输入天气 , 其他暂未开放';
                     break;
                 case 'image':
                     # 图片消息...
