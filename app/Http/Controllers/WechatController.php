@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\API\weather;
+use App\Api\RunningInquire;
 use Illuminate\Http\Request;
 use Log;
 use App\Http\Requests;
@@ -15,7 +16,8 @@ class WechatController extends Controller
         $weather = new weather;
         $test = $weather->getWeather('富阳');
         $userApi = $wechat->user;
-        $wechat->server->setMessageHandler(function ($message) use ($userApi , $test) {
+        $runner = new RunningInquire;
+        $wechat->server->setMessageHandler(function ($message) use ($userApi , $test ,$runner) {
             switch ($message->MsgType) {
                 case 'event':
                     # 事件消息...
@@ -27,7 +29,10 @@ class WechatController extends Controller
                         return $weather;
                     }
                     if($message->Content == '跑步'){
-                        return '成功了';
+                        $runner->getView();
+                        $weneed = $runner->getGrades();
+                        $pe = $weneed[0].'同学,你好! 您的总次数为'.$weneed[5];
+                        return $pe;
                     }
                     return '想要查看天气输入天气 , 其他暂未开放';
                     break;
