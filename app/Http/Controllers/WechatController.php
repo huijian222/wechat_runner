@@ -26,7 +26,7 @@ class WechatController extends Controller
     今天温度:'.$test['temperature_today'].' ,明日温度:'.$test['temperature_tomorrow'];
                         return $weather;
                     }
-                    if($message->Content = '跑步'){
+                    if($message->Content == '跑步'){
                         return '成功了';
                     }
                     return '想要查看天气输入天气 , 其他暂未开放';
