@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\API\weather;
-use App\Api\RunningInquire;
+use App\API\RunningInquire;
 use Illuminate\Http\Request;
 use Log;
 use App\Http\Requests;
