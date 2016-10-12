@@ -35,7 +35,7 @@ class WechatController extends Controller
                         $pe = $weneed[0].'同学,你好! 您的总次数为'.$weneed[5];
                         return $pe;
                     }
-                    if($message->Content == 'test'){
+                    while($message->Content == 'test'){
                         //return '你好 ' . $message->FromUserName . '我是你爸爸赖金榜';
                         //return '您好,绑定跑步账号请回复学号,纯数字PLZ';
                         if($message->Content == 'test2'){
