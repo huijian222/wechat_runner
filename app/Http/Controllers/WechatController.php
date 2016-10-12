@@ -39,7 +39,7 @@ class WechatController extends Controller
                     }
                     if(preg_match_all('/[0-9]+/' , $message->Content , $getNumber)!= 0){
                         preg_match('/[0-9]+/' , $message->Content , $getNumber);
-                        if($wechatuser->where('username' , $getNumber[0])!=''){
+                        if($wechatuser->where('username' ,'=', $getNumber[0])->get()!=''){
                             return 'test';
                         }
                         return $getNumber[0];
