@@ -37,11 +37,18 @@ class WechatController extends Controller
                         $pe = $weneed[0].'同学,你好! 您的总次数为'.$weneed[5];
                         return $pe;
                     }
-                    if(preg_match_all('/[0-9]+/' , $message->Content , $getNumber)!= 0){
-                        preg_match('/[0-9]+/' , $message->Content , $getNumber);
+                    if(preg_match_all('/[0-9]{10}/' , $message->Content , $getNumber)!= 0){
+                        preg_match('/[0-9]{10}/' , $message->Content , $getNumber);
                         $isHave = $wechatuser->where('username' ,'=', $getNumber[0])->first();
                         if($isHave){
                             return '该账号已经存在 请输入跑步查询';
+                        }
+                        if(!$isHave){
+                            $wechatuser->appid = $message->FromUserName;
+                            $wechatuser->username = $getNumber[0];
+                            $wechatuser->password = $getNumber[0];
+                            $wechatuser->save();
+                            return '绑定完成 请使用跑步查询';
                         }
 //                        if($wechatuser->where('username' ,'=', $getNumber[0])->get()!==''){
 //                            return 'test';
