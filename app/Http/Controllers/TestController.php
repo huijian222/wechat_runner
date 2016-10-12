@@ -9,8 +9,9 @@ use App\Http\Requests;
 class TestController extends Controller
 {
     public function index(){
-        $this->getView();
-        return $this->getGrades();
+        $test = '账号123321';
+        preg_match('/[0-9]+/' , $test , $getNumber);
+        return $getNumber;
     }
 
     public function getView(){
