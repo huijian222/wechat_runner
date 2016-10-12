@@ -47,7 +47,7 @@ class WechatController extends Controller
                         $isHave = $wechatuser->where('username' ,'=', $getNumber[0])->first();
                         $isOwnHave = $wechatuser->where('appid' ,'=', $message->FromUserName)->first();
                         if($isHave){
-                            return '该账号已经存在 请输入跑步查询';
+                            return '该账号已经存在 请输入跑步这两个字来进行查询';
                         }
                         if($isOwnHave){
                             return '同学您已经注册过学号了,请勿重复注册';
