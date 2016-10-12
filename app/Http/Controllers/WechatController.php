@@ -46,8 +46,8 @@ class WechatController extends Controller
 //                        if($wechatuser->where('username' ,'=', $getNumber[0])->get()!==''){
 //                            return 'test';
 //                        }
-                        return $isHave;
-                        //return $getNumber[0];
+                        //return $isHave;
+                        return $getNumber[0];
                     }
                     return '想要查看天气输入天气 , 
 查看跑步输入跑步,
