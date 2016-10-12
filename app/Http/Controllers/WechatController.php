@@ -34,6 +34,10 @@ class WechatController extends Controller
                         $pe = $weneed[0].'同学,你好! 您的总次数为'.$weneed[5];
                         return $pe;
                     }
+                    if($message->Content == 'test'){
+                        $test_message = 'test_cuccess';
+                        $wechat->message($test_message)->send();
+                    }
                     return '想要查看天气输入天气 , 其他暂未开放';
                     break;
                 case 'image':
