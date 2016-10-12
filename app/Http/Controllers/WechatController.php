@@ -38,6 +38,9 @@ class WechatController extends Controller
                     if($message->Content == 'test'){
                         //return '你好 ' . $message->FromUserName . '我是你爸爸赖金榜';
                         //return '您好,绑定跑步账号请回复学号,纯数字PLZ';
+                        if($message->Content == 'test2'){
+                            return 123321;
+                        }
                     }
                     if(preg_match_all('/[0-9]+/' , $message->Content , $getNumber)!= 0){
                         preg_match('/[0-9]+/' , $message->Content , $getNumber);
