@@ -35,17 +35,17 @@ class WechatController extends Controller
                         $pe = $weneed[0].'同学,你好! 您的总次数为'.$weneed[5];
                         return $pe;
                     }
-                    while($message->Content == '绑定'){
-                        //return '你好 ' . $message->FromUserName . '我是你爸爸赖金榜';
-                        //return '您好,绑定跑步账号请回复学号,纯数字PLZ';
-                        if(preg_match_all('/[0-9]+/' , $message->Content , $getNumber)!= 0){
-                            preg_match('/[0-9]+/' , $message->Content , $getNumber);
-                            return $getNumber[0];
-                        }
-                        else{
-                            break;
-                        }
-                    }
+//                    while($message->Content == '绑定'){
+//                        //return '你好 ' . $message->FromUserName . '我是你爸爸赖金榜';
+//                        //return '您好,绑定跑步账号请回复学号,纯数字PLZ';
+//                        if(preg_match_all('/[0-9]+/' , $message->Content , $getNumber)!= 0){
+//                            preg_match('/[0-9]+/' , $message->Content , $getNumber);
+//                            return $getNumber[0];
+//                        }
+//                        else{
+//                            break;
+//                        }
+//                    }
                     if(preg_match_all('/[0-9]+/' , $message->Content , $getNumber)!= 0){
                         preg_match('/[0-9]+/' , $message->Content , $getNumber);
                         return $getNumber[0];
