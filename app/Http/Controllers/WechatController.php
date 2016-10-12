@@ -35,8 +35,7 @@ class WechatController extends Controller
                         return $pe;
                     }
                     if($message->Content == 'test'){
-                        $test_message = 'test_cuccess';
-                        $wechat->serve->message($test_message)->send();
+                        return '你好 ' . $message->FromUserName . '我是你爸爸赖金榜';
                     }
                     return '想要查看天气输入天气 , 其他暂未开放';
                     break;
