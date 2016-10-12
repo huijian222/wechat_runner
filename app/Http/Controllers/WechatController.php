@@ -32,7 +32,12 @@ class WechatController extends Controller
                         return $weather;
                     }
                     if($message->Content == '跑步'){
-                        $runner->getView();
+                        $isOwnHave = $wechatuser->where('appid' ,'=', $message->FromUserName)->first();
+                        $userandpass = $wechatuser->where('appid','=',$message->FromUserName)->get();
+                        if(!$isOwnHave){
+                            return '请先绑定,同学';
+                        }
+                        $runner->getView($userandpass[0]['username'],$userandpass[0]['password']);
                         $weneed = $runner->getGrades();
                         $pe = $weneed[0].'同学,你好! 您的总次数为'.$weneed[5];
                         return $pe;
@@ -40,15 +45,21 @@ class WechatController extends Controller
                     if(preg_match_all('/[0-9]{10}/' , $message->Content , $getNumber)!= 0){
                         preg_match('/[0-9]{10}/' , $message->Content , $getNumber);
                         $isHave = $wechatuser->where('username' ,'=', $getNumber[0])->first();
+                        $isOwnHave = $wechatuser->where('appid' ,'=', $message->FromUserName)->first();
                         if($isHave){
                             return '该账号已经存在 请输入跑步查询';
                         }
+                        if($isOwnHave){
+                            return '同学您已经注册过学号了,请勿重复注册';
+                        }
                         if(!$isHave){
-                            $wechatuser->appid = $message->FromUserName;
-                            $wechatuser->username = $getNumber[0];
-                            $wechatuser->password = $getNumber[0];
-                            $wechatuser->save();
-                            return '绑定完成 请使用跑步查询';
+                            if(!$isOwnHave){
+                                $wechatuser->appid = $message->FromUserName;
+                                $wechatuser->username = $getNumber[0];
+                                $wechatuser->password = $getNumber[0];
+                                $wechatuser->save();
+                                return '绑定完成 请使用跑步查询';
+                            }
                         }
 //                        if($wechatuser->where('username' ,'=', $getNumber[0])->get()!==''){
 //                            return 'test';

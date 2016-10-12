@@ -4,9 +4,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 class RunningInquire{
-    public function getView(){
-        $username = 2015112216;
-        $password = 2015112216;
+    public function getView($user , $pass){
+        $username = $user;
+        $password = $pass;
         $cookie = dirname(__FILE__) . '/cookie_oschina.txt';
         $url = "http://hzaspt.sunnysport.org.cn/login";
         $user_agent = "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; .NET CLR 1.1.4322)";
