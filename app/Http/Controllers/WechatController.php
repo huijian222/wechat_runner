@@ -18,6 +18,7 @@ class WechatController extends Controller
         $userApi = $wechat->user;
         $runner = new RunningInquire;
         $wechat->server->setMessageHandler(function ($message) use ($userApi , $test ,$runner) {
+            $flag = 0;
             switch ($message->MsgType) {
                 case 'event':
                     # 事件消息...
