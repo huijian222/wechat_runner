@@ -44,7 +44,7 @@ class WechatController extends Controller
                     }
                     if(preg_match('/[0-9]+/' , $message->Content , $getNumber)){
                         //preg_match('/[0-9]+/' , $message->Content , $getNumber)
-                        return $message->Content;
+                        return $getNumber;
                     }
                     return '想要查看天气输入天气 , 查看跑步输入跑步,其他功能暂未实现,抱歉。';
                     break;
