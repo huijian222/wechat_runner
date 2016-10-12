@@ -46,7 +46,8 @@ class WechatController extends Controller
                         preg_match('/[0-9]+/' , $message->Content , $getNumber);
                         return $getNumber[0];
                     }
-                    return '想要查看天气输入天气 , 查看跑步输入跑步,其他功能暂未实现,抱歉。';
+                    return '想要查看天气输入天气 , 查看跑步输入跑步,绑定账号请输入账号即可,默认密码等于账号。
+                    其他功能暂未实现,抱歉。';
                     break;
                 case 'image':
                     # 图片消息...
