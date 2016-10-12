@@ -35,9 +35,13 @@ class WechatController extends Controller
                         return $pe;
                     }
                     if($message->Content == 'test'){
-                        return '你好 ' . $message->FromUserName . '我是你爸爸赖金榜';
+                        //return '你好 ' . $message->FromUserName . '我是你爸爸赖金榜';
+                        return '您好,绑定跑步账号请回复学号,纯数字PLZ';
                     }
-                    return '想要查看天气输入天气 , 其他暂未开放';
+                    if(preg_match('/[0-9]+/' , $message->Content , getNumber)){
+                        return 'test_success';
+                    }
+                    return '想要查看天气输入天气 , 查看跑步输入跑步,其他功能暂未实现,抱歉。';
                     break;
                 case 'image':
                     # 图片消息...
