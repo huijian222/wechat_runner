@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\WechatUser;
 use App\API\weather;
 use App\API\RunningInquire;
 use Illuminate\Http\Request;
@@ -17,7 +18,8 @@ class WechatController extends Controller
         $test = $weather->getWeather('富阳');
         $userApi = $wechat->user;
         $runner = new RunningInquire;
-        $wechat->server->setMessageHandler(function ($message) use ($userApi , $test ,$runner) {
+        $wechatuser = new WechatUser;
+        $wechat->server->setMessageHandler(function ($message) use ($userApi , $test ,$runner , $wechatuser) {
             $flag = 0;
             switch ($message->MsgType) {
                 case 'event':
@@ -35,19 +37,11 @@ class WechatController extends Controller
                         $pe = $weneed[0].'同学,你好! 您的总次数为'.$weneed[5];
                         return $pe;
                     }
-//                    while($message->Content == '绑定'){
-//                        //return '你好 ' . $message->FromUserName . '我是你爸爸赖金榜';
-//                        //return '您好,绑定跑步账号请回复学号,纯数字PLZ';
-//                        if(preg_match_all('/[0-9]+/' , $message->Content , $getNumber)!= 0){
-//                            preg_match('/[0-9]+/' , $message->Content , $getNumber);
-//                            return $getNumber[0];
-//                        }
-//                        else{
-//                            break;
-//                        }
-//                    }
                     if(preg_match_all('/[0-9]+/' , $message->Content , $getNumber)!= 0){
                         preg_match('/[0-9]+/' , $message->Content , $getNumber);
+                        if($wechatuser->where('username' , $getNumber[0])!=''){
+                            return 'test';
+                        }
                         return $getNumber[0];
                     }
                     return '想要查看天气输入天气 , 
